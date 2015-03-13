@@ -1,14 +1,10 @@
 <?php
-/**
- * User: pierswarmers
- * DateMock: 2/03/15
- * Time: 7:58 PM
- */
 
 namespace Test\ManDate;
 
+
 use ManDate\Mandate;
-use ManDate\Rule\LunchRule;
+use ManDate\Rule\DaytimeRule;
 use ManDate\Rule\WeekdayRule;
 
 class MandateTest extends \PHPUnit_Framework_TestCase
@@ -19,10 +15,10 @@ class MandateTest extends \PHPUnit_Framework_TestCase
 
         $mandate
             ->andWhere(new WeekdayRule())
-            ->andWhere(new LunchRule())
+            ->andWhere(new DaytimeRule())
         ;
 
-        $this->assertTrue($mandate->validate(new \DateTime('2015-03-02 12:30')));
+        $this->assertTrue($mandate->validate(new \DateTime('2015-03-03 07:00', new \DateTimeZone('Australia/Sydney'))));
     }
 
     public function testFail()
@@ -31,10 +27,10 @@ class MandateTest extends \PHPUnit_Framework_TestCase
 
         $mandate
             ->andWhere(new WeekdayRule())
-            ->andWhere(new LunchRule())
+            ->andWhere(new DaytimeRule())
         ;
 
-        $this->assertFalse($mandate->validate(new \DateTime('2015-03-02 11:30')));
+        $this->assertFalse($mandate->validate(new \DateTime('2015-03-03 04:00', new \DateTimeZone('Australia/Sydney'))));
     }
 
     public function testWhereAndWhereNotPass()
@@ -43,10 +39,10 @@ class MandateTest extends \PHPUnit_Framework_TestCase
 
         $mandate
             ->andWhere(new WeekdayRule())
-            ->andWhereNot(new LunchRule())
+            ->andWhereNot(new DaytimeRule())
         ;
 
-        $this->assertTrue($mandate->validate(new \DateTime('2015-03-02 9:30')));
+        $this->assertTrue($mandate->validate(new \DateTime('2015-03-03 04:00', new \DateTimeZone('Australia/Sydney'))));
     }
 
     public function testWhereAndWhereNotFail()
@@ -55,9 +51,9 @@ class MandateTest extends \PHPUnit_Framework_TestCase
 
         $mandate
             ->where(new WeekdayRule())
-            ->andWhereNot(new LunchRule())
+            ->andWhereNot(new DaytimeRule())
         ;
 
-        $this->assertFalse($mandate->validate(new \DateTime('2015-03-02 12:30')));
+        $this->assertFalse($mandate->validate(new \DateTime('2015-03-03 07:00', new \DateTimeZone('Australia/Sydney'))));
     }
 }
