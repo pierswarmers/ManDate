@@ -48,3 +48,15 @@ if ($mandate->validate($date)) {
     echo 'It\'s a weekday afternoon!';
 }
 ```
+
+## Rules
+
+Rule  | Details
+------------- | -------------
+AfternoonRule  | Later than midday.
+CollisionRule  | Collides with another date.
+DaytimeRule  | After sunrise and before sunset.
+MorningRule  | Earlier than midday.
+NighttimeRule  | After sunset and before sunrise.
+WeekdayRule  | Monday to Friday.
+WeekendRule  | Saturday and Sunday.
