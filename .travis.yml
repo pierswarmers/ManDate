@@ -14,5 +14,3 @@ before_script:
     # php deps
     - composer self-update
     - composer install --dev
-
-script: ./bin/phpunit -v
