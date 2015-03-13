@@ -11,6 +11,5 @@ matrix:
         - php: hhvm
 
 before_script:
-    # php deps
     - composer self-update
     - composer install --dev
