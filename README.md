@@ -42,7 +42,9 @@ $mandate
     ->andWhereNot(new MorningRule())
 ;
 
-if ($mandate->validate(new \DateTime('2015-03-02 11:30', new \DateTimeZone('Australia/Sydney')))) {
+$date  = new \DateTime('2015-03-02 11:30', new \DateTimeZone('Australia/Sydney'));
+
+if ($mandate->validate($date)) {
     echo 'It\'s a weekday afternoon!';
 }
 ```
