@@ -1,0 +1,25 @@
+{
+  "name": "pierswarmers/mandate",
+  "minimum-stability": "dev",
+  "description": "Simple utility for describing date based rules.",
+  "keywords": [ "date", "datetime", "rule", "mandate" ],
+  "homepage": "https://github.com/pierswarmers/mandate",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Piers Warmers",
+      "email": "hello@pierswarmers.com",
+      "homepage": "http://pierswarmers.com/"
+    }
+  ],
+  "require": {
+    "php": ">=5.4"
+  },
+  "require-dev": {
+
+  },
+  "autoload": {
+    "psr-0": { "ManDate": "src/" }
+  }
+}
